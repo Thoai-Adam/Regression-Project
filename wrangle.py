@@ -4,19 +4,16 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from env import host, user, password 
+
+from env import get_connection
+
 import os
 from sklearn.model_selection import train_test_split
 
 import sklearn.preprocessing
 
-#Connection function to access Codeup Database and retrieve zillow dataset from mysql
-def get_connection(db, user=user, host=host, password=password):
-    '''
-    This function creates a connection to Codeup Database with 
-    info from personal env file (env file has user login information).
-    '''
-    return f'mysql+pymysql://{user}:{password}@{host}/{db}'  
+
+
 
 ##############ACQUIRE##################
 
@@ -32,8 +29,8 @@ def acquire_zillow():
                 taxamount, taxvaluedollarcnt
                 FROM  properties_2017
                 JOIN predictions_2017 USING(parcelid)
-                WHERE transactiondate between "2017-05-01" and "2017-08-31"
-                and unitcnt = 261 or 263 or 273 or 274 or 276 or 279;
+                WHERE transactiondate between "2017-01-01" and "2017-12-31;"
+                
                 '''
 
     
@@ -188,3 +185,16 @@ def Min_Max_Scaler(X_train, X_validate, X_test):
     X_test_scaled = pd.DataFrame(scaler.transform(X_test), index = X_test.index, columns = X_test.columns)
     
     return scaler, X_train_scaled, X_validate_scaled, X_test_scaled
+
+
+
+
+
+
+def mpvdrop ():
+    mvp.drop(['yearbuilt', 'county', 'zip_code', 'ca_county', 'latitude','longitude', 'taxamount', 'property_age', 'tax_rate'], axis=1, inplace=True)
+    return mvp
+
+
+
+

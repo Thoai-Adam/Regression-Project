@@ -126,3 +126,42 @@ def rfe(x, y, k):
     print(str(len(rfe_features)), 'selected features')
     
     return  rfe_features
+
+
+def mvp_scatter():
+        # Create a scatter plot for tax_value
+    plt.figure(figsize=(12, 6))
+    plt.scatter(mvp.tax_value.value_counts().index, mvp.tax_value.value_counts().values, alpha=0.5)
+    plt.title('Scatter Plot of Tax Value Value Counts')
+    plt.xlabel('Tax Value')
+    plt.ylabel('Count')
+    plt.grid(True)
+    plt.show()
+
+    # Create a scatter plot for square_feet
+    plt.figure(figsize=(12, 6))
+    plt.scatter(mvp.square_feet.value_counts().index, mvp.square_feet.value_counts().values, alpha=0.5)
+    plt.title('Scatter Plot of Square Feet Value Counts')
+    plt.xlabel('Square Feet')
+    plt.ylabel('Count')
+    plt.grid(True)
+    plt.show()
+
+    # Create a scatter plot for bathrooms
+    plt.figure(figsize=(12, 6))
+    plt.scatter(mvp.bathrooms.value_counts().index, mvp.bathrooms.value_counts().values, alpha=0.5)
+    plt.title('Scatter Plot of Bathrooms Value Counts')
+    plt.xlabel('Bathrooms')
+    plt.ylabel('Count')
+    plt.grid(True)
+    plt.show()
+
+    # Create a scatter plot for bedrooms
+    plt.figure(figsize=(12, 6))
+    plt.scatter(mvp.bedrooms.value_counts().index, mvp.bedrooms.value_counts().values, alpha=0.5)
+    plt.title('Scatter Plot of Bedrooms Value Counts')
+    plt.xlabel('Bedrooms')
+    plt.ylabel('Count')
+    plt.grid(True)
+    plt.show()
+    return mvp

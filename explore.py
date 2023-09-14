@@ -217,3 +217,57 @@ def plot_swarm_grid_with_color(train, target, cat_vars, quant_vars):
             ax[i].set_ylabel(quant)
             ax[i].set_title(cat)
         plt.show()
+        
+        
+        
+def mvp_columns_keep(data):
+    columns_to_keep = ['bedrooms', 'bathrooms', 'square_feet', 'tax_value']
+    filtered_mvp = data[columns_to_keep]  # Use a different variable name
+    return filtered_mvp
+
+    
+    
+def mvp_hypothesis_1(train, alpha=0.05):
+    # Calculate Pearson's correlation coefficient
+    corr, p = stats.pearsonr(train.square_feet, train.tax_value)
+    print(f'Correlation for square feet is: {corr} and p value is: {p}')
+
+    # Correlation test summary
+    if p < alpha:
+        print(f'P-value is: {p} which is less than alpha: {alpha}')
+        print("Reject the null hypothesis")
+    else:
+        print(f'P-value is: {p} which is greater than alpha: {alpha}')
+        print("We fail to reject the null hypothesis")
+        
+def mvp_hypothesis_2(train, alpha = 0.05):
+    #calculate pearsons correlation coefficient
+    corr, p = stats.pearsonr(train.bathrooms, train.tax_value)
+    corr, p
+    print(f'Correlation for bathrooms is: {corr} and p value is: {p}')
+
+    #correlation test summary
+    if p < alpha:
+        print(f'Pvalue is: {p} is less than alpha: {alpha}')
+        print("Reject the null hypothesis")
+    else:
+        print(f'Pvalue is: {p} is greater than alpha: {alpha}')
+        print("We fail to reject the null hypothesis")
+        
+def mvp_hypothesis_3(train, alpha - 0.05):
+    #calculate pearsons correlation coefficient
+    corr, p = stats.pearsonr(train.square_feet, train.tax_value)
+    corr, p
+    print(f'Correlation for bedrooms is: {corr} and p value is: {p}')
+
+    #correlation test summary
+    if p < alpha:
+        print(f'Pvalue is: {p} is less than alpha: {alpha}')
+        print("Reject the null hypothesis")
+    else:
+        print(f'Pvalue is: {p} is greater than alpha: {alpha}')
+        print("We fail to reject the null hypothesis")
+
+        
+        
+        

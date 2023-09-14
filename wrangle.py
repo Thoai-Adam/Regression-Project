@@ -198,3 +198,22 @@ def mpvdrop ():
 
 
 
+
+
+def Properties_Per_county(df):
+    plt.figure(figsize=(10, 6)) 
+    plt.title('Number of Properties Per County')
+    ax = sns.countplot(data=df, x='fips')
+    plt.xlabel('California Counties')
+    plt.ylabel('Number of Properties')
+    plt.xticks(rotation=45)
+
+    # Add count labels on top of each bar
+    for p in ax.patches:
+        ax.annotate(f'{p.get_height()}', (p.get_x() + p.get_width() / 2., p.get_height()), ha='center', va='bottom')
+    
+    # Display the plot
+    plt.show()
+
+
+

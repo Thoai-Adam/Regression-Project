@@ -165,3 +165,116 @@ def mvp_scatter():
     plt.grid(True)
     plt.show()
     return mvp
+
+
+
+
+import matplotlib.pyplot as plt
+
+def county_taxrate_distribution(df):
+    # Los Angeles County
+    lac = df[df.fips == "Los Angeles"].tax_rate
+    lac_mean = round(lac.mean(), 3)
+
+    plt.figure(figsize=(12, 8))
+    plt.title("Los Angeles County Tax Rate Distribution")
+    plt.hist(lac, bins=800)
+    plt.vlines(lac_mean, 0, 20000, ls='--', color='orange', label="LAC mean tax rate: 1.38%")
+    plt.xlabel('Tax Rate')
+    plt.ylabel("Number of Properties")
+    plt.legend()
+    plt.xlim(0.0, 0.1)
+    plt.show()  # Display the plot
+
+    # Orange County
+    oc = df[df.fips == "Orange"].tax_rate
+    oc_mean = round(oc.mean(), 3)
+
+    plt.figure(figsize=(12, 8))
+    plt.title("Orange County Tax Rate Distribution")
+    plt.hist(oc, bins=800)
+    plt.vlines(oc_mean, 0, 1200, ls='--', color='orange', label="OC mean tax rate: 1.21%")
+    plt.xlabel('Tax Rate')
+    plt.xlim(0.0, 0.1)
+    plt.ylabel("Number of Properties")
+    plt.legend()
+    plt.show()  # Display the plot
+
+    # Ventura County
+    vc = df[df.fips == "Ventura"].tax_rate
+    vc_mean = round(vc.mean(), 3)
+
+    plt.figure(figsize=(12, 8))
+    plt.title("Ventura County Tax Rate Distribution")
+    plt.hist(vc, bins=800)
+    plt.vlines(vc_mean, 0, 1200, ls='--', color='orange', label="VC mean tax rate: 1.19%")
+    plt.xlabel('Tax Rate')
+    plt.ylabel('Number of Properties')
+    plt.xlim(0.0, 0.1)
+    plt.legend()
+    plt.show()  # Display the plot
+
+
+    
+    
+def mvp_scatter(data):
+    # Create a scatter plot for tax_value
+    plt.figure(figsize=(12, 6))
+    plt.scatter(data.tax_value.value_counts().index, data.tax_value.value_counts().values, alpha=0.5)
+    plt.title('Scatter Plot of Tax Value Value Counts')
+    plt.xlabel('Tax Value')
+    plt.ylabel('Count')
+    plt.grid(True)
+    plt.show()
+
+    # Create a scatter plot for square_feet
+    plt.figure(figsize=(12, 6))
+    plt.scatter(data.square_feet.value_counts().index, data.square_feet.value_counts().values, alpha=0.5)
+    plt.title('Scatter Plot of Square Feet Value Counts')
+    plt.xlabel('Square Feet')
+    plt.ylabel('Count')
+    plt.grid(True)
+    plt.show()
+
+    # Create a scatter plot for bathrooms
+    plt.figure(figsize=(12, 6))
+    plt.scatter(data.bathrooms.value_counts().index, data.bathrooms.value_counts().values, alpha=0.5)
+    plt.title('Scatter Plot of Bathrooms Value Counts')
+    plt.xlabel('Bathrooms')
+    plt.ylabel('Count')
+    plt.grid(True)
+    plt.show()
+
+    # Create a scatter plot for bedrooms
+    plt.figure(figsize=(12, 6))
+    plt.scatter(data.bedrooms.value_counts().index, data.bedrooms.value_counts().values, alpha=0.5)
+    plt.title('Scatter Plot of Bedrooms Value Counts')
+    plt.xlabel('Bedrooms')
+    plt.ylabel('Count')
+    plt.grid(True)
+    plt.show()
+    
+    
+    
+    
+    
+    
+def visualize_univariates():
+    plt.figure(figsize=(10, 8))
+    for i, col in enumerate(['bedrooms', 'bathrooms', 'square_feet', 'tax_value']):  
+        plot_number = i + 1 # i starts at 0, but plot nos should start at 1
+        series = df[col]  
+        plt.subplot(2,2, plot_number)
+        plt.title(col)
+        series.hist(bins=20)
+    
+
+
+def mvp_pairplot():
+    sns.pairplot(mvp,
+                x_vars=["bedrooms", "bathrooms", "square_feet", 'tax_value'],
+                y_vars=["bedrooms", "bathrooms", "square_feet", 'tax_value'],
+                kind= "reg")
+    
+
+        

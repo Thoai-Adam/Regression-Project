@@ -254,7 +254,7 @@ def mvp_hypothesis_2(train, alpha = 0.05):
         print(f'Pvalue is: {p} is greater than alpha: {alpha}')
         print("We fail to reject the null hypothesis")
         
-def mvp_hypothesis_3(train, alpha - 0.05):
+def mvp_hypothesis_3(train, alpha = 0.05):
     #calculate pearsons correlation coefficient
     corr, p = stats.pearsonr(train.square_feet, train.tax_value)
     corr, p
